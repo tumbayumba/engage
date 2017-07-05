@@ -17,5 +17,13 @@ echo "index.php\n";
 
 //echo REDIRECT_QUERY_STRING;
 
+//print_r($_SERVER);
 
-print_r($_SERVER);
+$uri = explode("/",ltrim($_SERVER['REQUEST_URI'],'/'));
+
+if($uri[0]=='foo')
+	include 'controllers/foo.php';
+if($uri[0]=='bar')
+	include 'controllers/bar.php';
+if($uri[0]=='test')
+	include 'controllers/test.php';
