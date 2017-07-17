@@ -2,6 +2,8 @@
 /**
 * 
 */
+namespace App;
+
 class BaseApplication
 {
 	

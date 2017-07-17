@@ -19,4 +19,5 @@ include 'engage/autoloads/autoload.php';
 
 //$uri = explode("/",ltrim($_SERVER['REQUEST_URI'],'/'));
 
-$app = new BaseApplication;
+
+$app = new app\BaseApplication;
