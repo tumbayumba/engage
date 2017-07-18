@@ -1,4 +1,4 @@
 <?php
 return [
-	'app\\' => BASE_PATH.'/engage/app/',
+	'app' => BASE_PATH.'/engage/app/',
 ];
