@@ -2,13 +2,13 @@
 /**
 * 
 */
-namespace App;
+namespace app;
 
 class BaseApplication
 {
 	
 	function __construct()
 	{
-		echo __CLASS__;
+		echo __METHOD__;
 	}
 }

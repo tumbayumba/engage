@@ -1,4 +1,5 @@
 <?php
+session_start();
 echo '<pre>';
 echo "index.php\n";
 
@@ -17,7 +18,7 @@ include 'engage/autoloads/autoload.php';
 
 //print_r($_SERVER);
 
-//$uri = explode("/",ltrim($_SERVER['REQUEST_URI'],'/'));
-
+$uri = explode("/",ltrim($_SERVER['REQUEST_URI'],'/'));
+print_r($uri);
 
 $app = new app\BaseApplication;
