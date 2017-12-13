@@ -9,6 +9,6 @@ class Application extends BaseApplication
 	
 	function __construct()
 	{
-		echo __CLASS__;
+		echo __METHOD__;
 	}
 }
