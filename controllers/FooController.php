@@ -1,5 +1,5 @@
 <?php
 
-class FooController{
+class FooController extends BaseController{
 	
 }

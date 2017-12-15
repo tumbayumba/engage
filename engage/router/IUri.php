@@ -1,6 +1,7 @@
 <?php
 namespace router;
 
-interface IRouter {
+interface IUri {
 	
+
 }

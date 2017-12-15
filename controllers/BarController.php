@@ -1,6 +1,6 @@
 <?php
 
-class BarController{
+class BarController extends BaseController{
 
 	
 

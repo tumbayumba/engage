@@ -1,12 +1,12 @@
 <?php
-namespace router;
+namespace app;
 
-class Router implements IRouter {
-
+class Controller
+{
+	
 	function __construct()
 	{
 		echo __METHOD__.PHP_EOL;
-		
 	}
 
 }
