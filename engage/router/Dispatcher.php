@@ -1,7 +1,7 @@
 <?php
 namespace router;
 use router\Uri as Uri;
-//use controllers;
+use Exception;
 
 class Dispatcher implements IDispatcher
 {
@@ -17,15 +17,27 @@ class Dispatcher implements IDispatcher
 
 	public function dispatch(){
 		echo __METHOD__.PHP_EOL;
-		$c = 'controllers\\'.$this->_controller;
+		if($this->_controller!='')
+			$c = 'controllers\\'.$this->_controller;
+		else
+			$c = 'controllers\DefaultController';
 		$ctrl = new $c;
-		print_r($ctrl);
+		if($this->_action=='')
+			$ac = 'actionIndex';
+		else{
+			$ac = $this->_action;
+			if(!isset($ctrl->_actions[$this->_action]))
+				throw new Exception("Action '".$this->_action."' is not defined in '".$this->_controller."'!");
+				
+		}
+		
+		$ctrl->{$ac}();
+
 	}
 
 	private function parse_url($uri_obj){
 		echo __METHOD__.PHP_EOL;
 		$url_arr = explode("/",ltrim($uri_obj->get_url(),"/"));
-		//print_r($url_arr); 
 		$url_parts_cnt = count($url_arr);
 		if($url_parts_cnt==1 && $url_arr[0]!='')
 			$this->_controller = ucfirst($url_arr[0].'Controller');

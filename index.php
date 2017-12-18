@@ -10,8 +10,8 @@ include_once 'engage/autoloads/autoload.php';
 //print_r($_SERVER);
 //$wconfig = include WEB_CONFIG;
 //print_r($wconfig);
-$uri = explode("/",ltrim($_SERVER['REQUEST_URI'],'/'));
-print_r($uri);
+//$uri = explode("/",ltrim($_SERVER['REQUEST_URI'],'/'));
+//print_r($uri);
 
 try {
 	$app = (new app\Application)->run();
@@ -23,10 +23,12 @@ try {
 	$_dispatcher = new router\Dispatcher($_uri);
 	print_r($_dispatcher);
 	$_dispatcher->dispatch();
+
+	
 } catch (Exception $e) {
 	print_r($e);
 }
 
-
+echo "============================================".PHP_EOL;
 $app_end = microtime();
 echo 'APP TIME: ',($app_end-$app_start);
