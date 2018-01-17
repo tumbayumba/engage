@@ -7,14 +7,20 @@ class TestController extends BaseController
 	
 	public function __construct(){ 
 		parent::__construct();
-		echo __METHOD__.PHP_EOL; 
-		//$this->test();
-		//$app = new app\Application; 
+	}
+
+	public function actionIndex(){
+		
+		$this->render('test/index',['title'=>'Index']);
 	}
 
 	public function actionView(){
-		echo __METHOD__.PHP_EOL; 
-		//print_r($this->get_methods());
+		
+		$this->render('test/view',['title'=>'View','age'=>35,'fio'=>'Eric','other'=>[22,344,211]]);
+	}
+
+	public function actionUpdate(){
+		
 	}
 
 }

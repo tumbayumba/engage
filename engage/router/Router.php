@@ -5,7 +5,7 @@ class Router implements IRouter {
 
 	function __construct()
 	{
-		echo __METHOD__.PHP_EOL;
+		
 		
 	}
 

@@ -6,11 +6,15 @@ class BaseController extends Controller
 {
 	public function __construct(){
 		parent::__construct();
-		echo __METHOD__.PHP_EOL;
+		$this->init();
+	}
+
+	public function init(){
+		parent::init();
 	}
 
 	public function test(){
-		echo __METHOD__.PHP_EOL;
+		
 	}
 
 }

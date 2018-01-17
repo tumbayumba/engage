@@ -1,5 +1,6 @@
 <?php
 namespace app;
+use app\View;
 use ReflectionClass;
 
 class Controller
@@ -7,15 +8,20 @@ class Controller
 	public $_refl;
 	public $_methods = [];
 	public $_actions = [];
+	public $_layout;
+	public $_view;
 
 	public function __construct(){
-		echo __METHOD__.PHP_EOL;
 		$this->_refl = new ReflectionClass(get_class($this));
 		
 		$this->get_actions();
-		
-		//print_r($this->_actions);
+		$this->init_view();
+		$this->init();
 
+	}
+
+	public function init(){
+		
 	}
 
 	public function get_methods(){
@@ -30,6 +36,19 @@ class Controller
 	}
 
 	public function actionIndex(){
-		echo __METHOD__.PHP_EOL;
+		
+	}
+
+	public function init_view(){
+		return $this->_view = new View;
+	}
+
+	public function view(){
+		return $this->_view;
+	}
+
+	public function render($alias,$params=[]){
+		$this->view()->draw($alias,$params);
+
 	}
 }

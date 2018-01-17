@@ -6,12 +6,12 @@ class DefaultController extends BaseController
 {
 	
 	public function __construct(){ 
-		echo __METHOD__.PHP_EOL; 
-		//$app = new app\Application; 
+		parent::__construct();
 	}
 
-	public function actionView(){
-		echo __METHOD__.PHP_EOL; 
+	public function actionIndex(){
+		
+		$this->render('default/index');
 	}
 
 }

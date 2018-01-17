@@ -3,12 +3,15 @@
 * 
 */
 namespace app;
+use app\BaseApplication;
 
 class Application extends BaseApplication
 {
 	
-	function __construct()
-	{
-		echo __METHOD__;
+	public function __construct(){
+		parent::__construct();
+		
 	}
+
+
 }

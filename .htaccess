@@ -2,5 +2,11 @@ Options +FollowSymLinks +ExecCGI
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  # This below probably needs a fix
+  RewriteCond %{REQUEST_URI} !^/public/
   RewriteRule ^(.*)$ index.php [QSA]
+
 </IfModule>

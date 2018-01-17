@@ -10,7 +10,6 @@ class Uri implements IUri
 
 	function __construct($uri='')
 	{
-		echo __METHOD__.PHP_EOL;
 		if($uri==''){
 			$this->_uri = $_SERVER['REQUEST_URI'];
 			$this->_url = $_SERVER['REDIRECT_URL'];
