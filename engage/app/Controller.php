@@ -1,7 +1,9 @@
 <?php
 namespace app;
+use app\Application;
 use app\View;
 use ReflectionClass;
+use app\Request;
 
 class Controller
 {
@@ -10,10 +12,11 @@ class Controller
 	public $_actions = [];
 	public $_layout;
 	public $_view;
+	public $_request;
 
 	public function __construct(){
 		$this->_refl = new ReflectionClass(get_class($this));
-		
+		$this->_request = new Request;
 		$this->get_actions();
 		$this->init_view();
 		$this->init();
@@ -22,6 +25,14 @@ class Controller
 
 	public function init(){
 		
+	}
+
+	public function beforeAction(){
+
+	}
+
+	public function request(){
+		return $this->_request;
 	}
 
 	public function get_methods(){
@@ -50,5 +61,17 @@ class Controller
 	public function render($alias,$params=[]){
 		$this->view()->draw($alias,$params);
 
+	}
+
+	public function redirect($alias,$args=[]){
+		$args_str = '';
+		if(!empty($args)){
+			$args_str .= '?';
+			foreach($args as $name=>$value)
+				$args_str .= $name."=".$value."&";
+			$args_str = rtrim($args_str,"&");
+		}
+		$p_url = ($alias=='' || $alias=='/') ? $alias : '/'.$alias;
+		header("Location: ".Application::load_wconfig()['domain'].$p_url.$args_str);
 	}
 }

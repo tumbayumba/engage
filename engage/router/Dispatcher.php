@@ -2,6 +2,7 @@
 namespace router;
 use router\Uri as Uri;
 use app\Request;
+use controllers\DefaultController;
 use Exception;
 
 class Dispatcher implements IDispatcher
@@ -10,27 +11,34 @@ class Dispatcher implements IDispatcher
 	protected $_controller;
 	protected $_action;
 	protected $_args;
+	protected $_controllers;
+	private $_class_mapping;
+	private $_request;
 
-	public function __construct(Uri $_uri){
-		$this->parse_url($_uri);
-		$this->_args = (new Request)->args();
+	public function __construct(){
+		$this->_uri = new Uri;
+		$this->_request = new Request;
+		$this->parse_url($this->_uri);
+		$this->_args = $this->_request->args();
+		$this->set_class_mapping();
+		$this->set_controllers();
 	}
 
 	public function dispatch(){
-		if($this->_controller!='')
+		if($this->_controller!='' && in_array($this->_controller,$this->_controllers))
 			$c = 'controllers\\'.$this->_controller;
 		else
 			$c = 'controllers\DefaultController';
 		$ctrl = new $c;
-		//else
-			//throw new Exception("Controller '".$c."' not exists!");
 			
 		if($this->_action=='')
 			$ac = 'actionIndex';
 		else{
 			$ac = $this->_action;
-			if(!isset($ctrl->_actions[$this->_action]))
-				throw new Exception("Action '".$this->_action."' is not defined in '".$this->_controller."'!");
+			if(!isset($ctrl->_actions[$this->_action])){
+				$ctrl = new DefaultController;
+				$ac = 'action404';
+			}
 				
 		}
 
@@ -49,6 +57,20 @@ class Dispatcher implements IDispatcher
 			$this->_controller = ucfirst($url_arr[0].'Controller');
 			$this->_action = 'action'.ucfirst($url_arr[1]);
 		}
+	}
+
+	private function set_class_mapping(){
+		$this->_class_mapping = include(AUTOLOADS_PATH.'class_mapping.php');
+	}
+
+	private function set_controllers(){
+		$files = scandir($this->_class_mapping['controllers']);
+		$controllers = [];
+		foreach($files as $file){
+			if($file!='.' && $file!='..' && strpos($file,"Controller.php")!==false)
+				$controllers[] = strtr($file,['.php'=>'']);
+		}
+		$this->_controllers = $controllers;
 	}
 
 }

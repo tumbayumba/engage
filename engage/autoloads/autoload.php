@@ -19,10 +19,11 @@ function app_autoloader($class) {
 		//echo 'Directory: '.$class_mapping[$path_alias]."\n";
 		//if(!isset($class_mapping[$path_alias]))
 			//throw new Exception("Class mapping doesn't exists.", 1);
+		//echo $class_mapping[$path_alias].DIRECTORY_SEPARATOR.$class_name.'.php'.PHP_EOL;
 		if(file_exists($class_mapping[$path_alias].DIRECTORY_SEPARATOR.$class_name.'.php'))
 			require_once $class_mapping[$path_alias].DIRECTORY_SEPARATOR.$class_name.'.php';	
 		else
-			throw new Exception("Class ".$class." not found in ".$class_mapping[$path_alias]."!");
+			throw new Exception("Class ".$class." not found at ".$class_mapping[$path_alias]."!");
 		
 	}
 	else

@@ -14,4 +14,8 @@ class DefaultController extends BaseController
 		$this->render('default/index');
 	}
 
+	public function action404(){
+		$this->render('default/404');
+	}
+
 }

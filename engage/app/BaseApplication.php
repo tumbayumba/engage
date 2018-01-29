@@ -4,15 +4,13 @@
 */
 namespace app;
 
-//use router\Uri;
-//use router\Dispatcher;
-
 class BaseApplication
 {
 	private static $_web_config;
 	
 	function __construct(){
 		$this->set_wconfig();
+		
 	}
 
 	public function set_wconfig(){
@@ -24,8 +22,6 @@ class BaseApplication
 	}
 
 	public function run(){
-		//$_uri = new router\Uri;
-		//$_dispatcher = new router\Dispatcher($_uri);
-		//$_dispatcher->dispatch();
+		
 	}
 }

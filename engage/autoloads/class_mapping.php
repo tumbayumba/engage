@@ -8,4 +8,6 @@ return [
 	'views' => BASE_PATH.'/views/',
 	'components' => BASE_PATH.'/components/',
 	'extensions' => BASE_PATH.'/extensions/',
+	'vendor' => BASE_PATH.'/vendor/',
+	'db' => BASE_PATH.'/vendor/PHP-MySQLi-Database-Class-master/',
 ];

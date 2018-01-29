@@ -26,6 +26,10 @@ class Request
 		return $this->_args;
 	}
 
+	public function set_args($args){
+		$this->_args = $args;
+	}
+
 	public function isPost(){
 		return $this->_method=='POST' ? true : false;
 	}

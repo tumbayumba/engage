@@ -1,6 +1,7 @@
 <?php
 namespace controllers;
 use app\Controller;
+use app\Request;
 
 class BaseController extends Controller
 {
@@ -9,12 +10,12 @@ class BaseController extends Controller
 		$this->init();
 	}
 
-	public function init(){
-		parent::init();
+	public function beforeAction(){
+		parent::beforeAction();
 	}
 
-	public function test(){
-		
+	public function init(){
+		parent::init();
 	}
 
 }

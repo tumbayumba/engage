@@ -14,8 +14,7 @@ try {
 	include_once 'engage/autoloads/autoload.php';
 
 	$app = new app\Application;
-	$_uri = new router\Uri;
-	$_d = new router\Dispatcher($_uri);
+	$_d = new router\Dispatcher();
 	$_d->dispatch();
 
 } catch (Exception $e) {
