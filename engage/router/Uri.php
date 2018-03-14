@@ -11,9 +11,9 @@ class Uri implements IUri
 	function __construct($uri='')
 	{
 		if($uri==''){
-			$this->_uri = $_SERVER['REQUEST_URI'];
-			$this->_url = $_SERVER['REDIRECT_URL'];
-			$this->_query_string = $_SERVER['REDIRECT_QUERY_STRING'];
+			$this->_uri = (APP_FOLDER!='') ? substr($_SERVER['REQUEST_URI'],strlen(APP_FOLDER)) : $_SERVER['REQUEST_URI'];
+			$this->_url = (APP_FOLDER!='') ? substr($_SERVER['REDIRECT_URL'],strlen(APP_FOLDER)) : $_SERVER['REDIRECT_URL'];
+			$this->_query_string = (APP_FOLDER!='') ? substr($_SERVER['REDIRECT_QUERY_STRING'],strlen(APP_FOLDER)) : $_SERVER['REDIRECT_QUERY_STRING'];
 		}
 		else
 			throw new Exception("Query param defined.");

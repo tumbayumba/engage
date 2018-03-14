@@ -15,7 +15,6 @@ class UserController extends BaseController
 
 	public function actionIndex(){
 		$db = $this->_user->db();
-		//$users = $db->rawQuery('select * from tbl_user where id=?',[1]);
 		$users = $db->get('user');
 		$this->render('user/index',['title'=>'ALL USERS','users'=>$users]);
 	}
@@ -36,9 +35,8 @@ class UserController extends BaseController
 			$id = $db->insert('user',$data);
 			$this->redirect('user/view',['id'=>$id]);
 		}
-		else{
+		else
 			$this->render('user/create',['title'=>'Create User']);
-		}
 	}
 
 	public function actionUpdate(){
@@ -53,9 +51,13 @@ class UserController extends BaseController
 	}
 
 	public function actionDelete(){
-		/*$db = $this->_user->db();
-		$db->where('id',3);
-		$db->delete('user');*/
+		//if($this->request()->isPost()){
+			$db = $this->_user->db();
+			$args = $this->request()->args();
+			$db->where('id',$args['id']);
+			$db->delete('user');
+		//}
+		$this->redirect('user/index');
 	}
 
 }

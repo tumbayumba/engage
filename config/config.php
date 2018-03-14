@@ -1,4 +1,5 @@
 <?php
-defined('BASE_PATH') or define('BASE_PATH', $_SERVER['DOCUMENT_ROOT']);
+defined('APP_FOLDER') ? '' : define('APP_FOLDER','');
+defined('BASE_PATH') or define('BASE_PATH', $_SERVER['DOCUMENT_ROOT'].APP_FOLDER);
 defined('WEB_CONFIG') or define('WEB_CONFIG', BASE_PATH.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'web.php');
 defined('AUTOLOADS_PATH') or define('AUTOLOADS_PATH', BASE_PATH.DIRECTORY_SEPARATOR.'engage'.DIRECTORY_SEPARATOR.'autoloads'.DIRECTORY_SEPARATOR);

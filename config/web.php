@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'domain' => 'http://testengage',
+	'domain' => 'http://testengage'.APP_FOLDER,
 	'layout' => BASE_PATH.'/views/layouts/main.php',
 	'db' => [
 		'host' => 'localhost',
