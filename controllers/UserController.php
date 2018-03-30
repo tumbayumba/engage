@@ -2,6 +2,7 @@
 namespace controllers;
 use controllers\BaseController;
 use models\User;
+use app\UserIdentity;
 
 class UserController extends BaseController
 {
@@ -11,6 +12,8 @@ class UserController extends BaseController
 		parent::__construct();
 		$this->view()->set_layout(BASE_PATH.'/views/layouts/main2.php');
 		$this->_user = new User;
+		if(!UserIdentity::is_auth())
+			$this->redirect('default/404');
 	}
 
 	public function actionIndex(){
@@ -51,12 +54,12 @@ class UserController extends BaseController
 	}
 
 	public function actionDelete(){
-		//if($this->request()->isPost()){
+		if($this->request()->isPost()){
 			$db = $this->_user->db();
 			$args = $this->request()->args();
 			$db->where('id',$args['id']);
 			$db->delete('user');
-		//}
+		}
 		$this->redirect('user/index');
 	}
 

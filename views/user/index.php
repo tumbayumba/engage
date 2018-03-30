@@ -16,14 +16,16 @@
 	      <th scope="col">#</th>
 	      <th scope="col">Login</th>
 	      <th scope="col">Password</th>
+	      <th scope="col"></th>
 	    </tr>
 	</thead>
 	<tbody>
 		<?php foreach($users as $user):?>
-		    <tr id="user_<?=$user['id']?>" class="view-record">
-		      <th scope="row"><?=$user['id']?></th>
-		      <td><?=$user['login']?></td>
+		    <tr id="user_<?=$user['id']?>">
+		      <td><?=$user['id']?></th>
+		      <td><a href="/user/view?id=<?=$user['id']?>"><?=$user['login']?></a></td>
 		      <td><?=$user['password']?></td>
+		      <td class="delete-user" id="delete_<?=$user['id']?>" style="cursor:pointer">del</td>
 		    </tr>
 		<?php endforeach;?>
 	</tbody>
@@ -31,7 +33,16 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		$(".view-record").css({ "cursor":"pointer" });
-		$(".view-record").click(function(){ location.href='/user/view?id='+$(this).attr('id').replace('user_','') });
+		$(".delete-user").click(function(){
+			var ans = confirm("Delete?")
+			if(ans){
+				$.ajax({
+				  url: '/user/delete',
+				  type: 'post',
+				  data: { id: $(this).attr("id").replace("delete_","") },
+				  success: function(data){ location.href='' }
+				});
+			}
+		});
 	});
 </script>

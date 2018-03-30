@@ -19,17 +19,16 @@ class Controller
 		$this->_request = new Request;
 		$this->get_actions();
 		$this->init_view();
-		$this->init();
-
-	}
-
-	public function init(){
 		
 	}
 
-	public function beforeAction(){
-
+	/*public function beforeAction(){
+		
 	}
+
+	public function afterAction(){
+		echo __METHOD__.PHP_EOL;
+	}*/
 
 	public function request(){
 		return $this->_request;
@@ -60,7 +59,6 @@ class Controller
 
 	public function render($alias,$params=[]){
 		$this->view()->draw($alias,$params);
-
 	}
 
 	public function redirect($alias,$args=[]){

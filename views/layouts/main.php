@@ -1,4 +1,7 @@
-<?php use app\Application;?>
+<?php 
+use app\Application;
+use app\UserIdentity;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +38,9 @@
 	                <li>
 	                    <a href="/test">Test</a>
 	                </li>
-	                <li>
-	                    <a href="/user">Users</a>
-	                </li>
+	                
+	                <?= UserIdentity::is_auth() ? '<li><a href="/user">Users</a></li>' : ''?>
+	                
 	            </ul>
 	        </div>
 	        <!-- /#sidebar-wrapper -->

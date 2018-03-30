@@ -1,12 +1,16 @@
 <?php
 namespace controllers;
 use controllers\BaseController;
+use app\UserIdentity;
 
 class TestController extends BaseController
 {
 	
 	public function __construct(){ 
 		parent::__construct();
+		//UserIdentity::authorize();
+		//UserIdentity::guest();
+		//echo UserIdentity::role('admin');exit;
 	}
 
 	public function actionIndex(){
