@@ -12,6 +12,13 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		console.log('test')
+		$.ajax({
+			url: 'test/jax',
+			type: 'post',
+			data: { p1: '1', p2: '2' },
+			success: function(data){
+				console.log(data)
+			}
+		});
 	});
 </script>

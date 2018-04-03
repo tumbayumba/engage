@@ -72,4 +72,8 @@ class Controller
 		$p_url = ($alias=='' || $alias=='/') ? $alias : '/'.$alias;
 		header("Location: ".Application::load_wconfig()['domain'].$p_url.$args_str);
 	}
+
+	public function load_model($name){
+		return (new $name)->load();
+	}
 }

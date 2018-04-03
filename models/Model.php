@@ -3,7 +3,6 @@ namespace models;
 use app\Application;
 use app\BaseModel;
 use db\MysqliDb;
-use db\dbObject;
 
 class Model extends BaseModel 
 {

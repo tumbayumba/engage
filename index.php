@@ -13,10 +13,9 @@ if($dbg){
 
 /////////////////////////////////////////////////
 try {
+	
 	include_once 'config/config.php';
 	include_once 'engage/autoloads/autoload.php';
-
-	
 
 	$app = new app\Application;
 	$_d = new router\Dispatcher();

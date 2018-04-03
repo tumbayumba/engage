@@ -41,6 +41,7 @@ use app\UserIdentity;
 	                
 	                <?= UserIdentity::is_auth() ? '<li><a href="/user">Users</a></li>' : ''?>
 	                
+	                <li><?= UserIdentity::is_auth() ? '<a href="/login/logout">Logout</a>' : '<a href="/login">Sign In</a>' ?></li>
 	            </ul>
 	        </div>
 	        <!-- /#sidebar-wrapper -->

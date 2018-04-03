@@ -1,4 +1,7 @@
-<?php use app\Application;?>
+<?php 
+use app\Application;
+use app\UserIdentity;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +46,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/user">Users</a>
+            </li>
+            <li class="nav-item">
+              <?= UserIdentity::is_auth() ? '<a class="nav-link" href="/login/logout">Logout</a>' : '<a class="nav-link" href="/login">Sign In</a>' ?>
             </li>
           </ul>
         </div>

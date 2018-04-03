@@ -34,9 +34,15 @@ class UserController extends BaseController
 		if($this->request()->isPost()){
 			$args = $this->request()->args();
 			$data = ['login'=>$args['login'],'password'=>$args['password']];
-			$db = $this->_user->db();
-			$id = $db->insert('user',$data);
-			$this->redirect('user/view',['id'=>$id]);
+			if($this->_user->validate($data)){
+				$db = $this->_user->db();
+				$id = $db->insert('user',$data);
+				$this->redirect('user/view',['id'=>$id]);
+			}
+			else{
+				//$this->_user->errors;
+				$this->render('user/create',['title'=>'Create User']);
+			} 
 		}
 		else
 			$this->render('user/create',['title'=>'Create User']);
@@ -47,9 +53,13 @@ class UserController extends BaseController
 			$db = $this->_user->db();
 			$args = $this->request()->args();
 			$data = ['login'=>$args['login'],'password'=>$args['password']];
-			$db->where('id',$args['id']);
-			$id = $db->update('user',$data);
-			$this->redirect('user/index');
+			if($this->_user->validate($data)){
+				$db->where('id',$args['id']);
+				$id = $db->update('user',$data);
+				$this->redirect('user/index');
+			}
+			else
+				$this->redirect('user/view',['id'=>$args['id']]);
 		}
 	}
 
