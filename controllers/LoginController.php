@@ -3,7 +3,7 @@ namespace controllers;
 use controllers\BaseController;
 use models\User;
 use app\UserIdentity;
-use app\validators\StringValidator;
+//use app\validators\StringValidator;
 
 class LoginController extends BaseController
 {

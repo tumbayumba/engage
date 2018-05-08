@@ -2,6 +2,7 @@
 return [
 	'app' => BASE_PATH.'/engage/app/',
 	'app/validators' => BASE_PATH.'/engage/app/validators/',
+        'app/types' => BASE_PATH.'/engage/app/types/',
 	'router' => BASE_PATH.'/engage/router/',
 	'modules' => BASE_PATH.'/modules/',
 	'controllers' => BASE_PATH.'/controllers/',

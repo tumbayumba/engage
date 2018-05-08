@@ -45,7 +45,7 @@ class UserController extends BaseController
 			} 
 		}
 		else
-			$this->render('user/create',['title'=>'Create User']);
+                    $this->render('user/create',['title'=>'Create User']);
 	}
 
 	public function actionUpdate(){
