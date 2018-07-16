@@ -3,6 +3,8 @@
 return [
 	'domain' => 'http://testengage'.APP_FOLDER,
 	'layout' => BASE_PATH.'/views/layouts/main.php',
+      /*
+      //DB CONNECTION
 	'db' => [
             'host' => 'localhost',
             'username' => 'root', 
@@ -12,4 +14,5 @@ return [
             'prefix' => 'tbl_',
             'charset' => 'utf8'
 	],
+      */
 ];

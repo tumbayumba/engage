@@ -9,19 +9,18 @@ if($dbg){
     echo '<pre>';
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
+    echo "============================================".PHP_EOL;
 }
 
 /////////////////////////////////////////////////
 try {
-	
     include_once 'config/config.php';
     include_once 'engage/autoloads/autoload.php';
     $app = new app\Application;
     $_d = new router\Dispatcher();
     $_d->dispatch();
-
 } catch (Exception $e) {
-    print_r($e);
+    if($dbg) print_r($e);
 }
 /////////////////////////////////////////////////
 

@@ -17,17 +17,23 @@ class UserController extends BaseController
 	}
 
 	public function actionIndex(){
+		/*
 		$db = $this->_user->db();
 		$users = $db->get('user');
 		$this->render('user/index',['title'=>'ALL USERS','users'=>$users]);
+		*/
+		$this->render('user/index',['title'=>'ALL USERS','users'=>[]]);
 	}
 
 	public function actionView(){
 		$args = $this->request()->args();
+		/*
 		$db = $this->_user->db();
 		$db->where('id',$args['id']);
 		$user = $db->get('user',1);
 		$this->render('user/view',['title'=>$user[0]['login'],'user'=>$user]);
+		*/
+		$this->render('user/view',['title'=>'DEMO USER','user'=>[]]);
 	}
 
 	public function actionCreate(){
@@ -35,23 +41,26 @@ class UserController extends BaseController
 			$args = $this->request()->args();
 			$data = ['login'=>$args['login'],'password'=>$args['password']];
 			if($this->_user->validate($data)){
+				/*
 				$db = $this->_user->db();
 				$id = $db->insert('user',$data);
 				$this->redirect('user/view',['id'=>$id]);
+				*/
+				$this->redirect('user/view',['title'=>'DEMO USER','user'=>[]]);
 			}
 			else{
-				//$this->_user->errors;
 				$this->render('user/create',['title'=>'Create User']);
 			} 
 		}
 		else
-                    $this->render('user/create',['title'=>'Create User']);
+            $this->render('user/create',['title'=>'Create User']);
 	}
 
 	public function actionUpdate(){
 		if($this->request()->isPost()){
-			$db = $this->_user->db();
 			$args = $this->request()->args();
+			/*
+			$db = $this->_user->db();
 			$data = ['login'=>$args['login'],'password'=>$args['password']];
 			if($this->_user->validate($data)){
 				$db->where('id',$args['id']);
@@ -60,16 +69,20 @@ class UserController extends BaseController
 			}
 			else
 				$this->redirect('user/view',['id'=>$args['id']]);
+			*/
+			$this->redirect('user/index');
 		}
 	}
 
 	public function actionDelete(){
+		/*
 		if($this->request()->isPost()){
 			$db = $this->_user->db();
 			$args = $this->request()->args();
 			$db->where('id',$args['id']);
 			$db->delete('user');
 		}
+		*/
 		$this->redirect('user/index');
 	}
 

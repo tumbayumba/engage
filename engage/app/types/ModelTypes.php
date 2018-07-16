@@ -12,4 +12,5 @@ class ModelTypes
 {
     const LABEL = 'label';
     const TYPE = 'type';
+    const VISIBLE = 'visible';
 }

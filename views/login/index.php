@@ -6,3 +6,4 @@
 	<input type="password" name="password" value="">
 	<button type="submit">Sign In</button>
 </form>
+<code>admin/1234</code>

@@ -11,10 +11,14 @@ class Model extends BaseModel
 
 	public function __construct(){ 
 		parent::__construct();
+		/*
+		SET DB CONFIG AND CONNECTION
 		$this->_db_config = Application::load_wconfig()['db'];
 		$this->set_db_connection();
+		*/
 	}
 
+	/*
 	public function db(){
 		return $this->_connection;
 	}
@@ -26,5 +30,6 @@ class Model extends BaseModel
 	public static function get_instance(){
 		return MysqliDb::getInstance();
 	}
+	*/
 	
 }

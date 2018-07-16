@@ -1,13 +1,17 @@
 <?php
 namespace app;
 use app\ModelValidator;
+use app\types\ModelTypes;
 
 class BaseModel 
 {
 	public $errors = [];
+        public $default_attributes = [
+            ModelTypes::VISIBLE => true,
+        ];
 
-	public function __construct(){ 
-		
+        public function __construct(){ 
+            
 	}
 
 	public function load(){
